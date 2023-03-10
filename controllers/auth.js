@@ -45,6 +45,7 @@ export const signin = async (req, res, next) => {
             sameSite: "none",
             secure: true,
             domain: "oliur-youtube-clone.onrender.com",
+            maxAge: 1 * 24 * 60 * 60 * 1000,
         })
             .status(200)
             .json(others);
@@ -96,6 +97,7 @@ export const googleAuth = async (req, res, next) => {
                 sameSite: "none",
                 secure: true,
                 domain: "oliur-youtube-clone.onrender.com",
+                maxAge: 1 * 24 * 60 * 60 * 1000,
             })
                 .status(200)
                 .json(savedUser._doc);
