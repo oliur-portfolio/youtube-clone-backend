@@ -41,11 +41,10 @@ export const signin = async (req, res, next) => {
         const { password, ...others } = user._doc;
 
         res.cookie("access_token", token, {
-            httpOnly: true,
-            sameSite: "none",
+            expires: new Date(Date.now() + 604800000),
             secure: true,
-            domain: "onrender.com",
-            maxAge: 1 * 24 * 60 * 60 * 1000,
+            sameSite: "none",
+            httpOnly: true,
         })
             .status(200)
             .json(others);
@@ -62,7 +61,6 @@ export const signout = async (req, res, next) => {
             httpOnly: true,
             sameSite: "none",
             secure: true,
-            domain: "onrender.com",
         })
             .status(200)
             .json({ success: true, message: "User logged out successfully" });
@@ -93,11 +91,10 @@ export const googleAuth = async (req, res, next) => {
             });
 
             res.cookie("access_token", token, {
-                httpOnly: true,
-                sameSite: "none",
+                expires: new Date(Date.now() + 604800000),
                 secure: true,
-                domain: "onrender.com",
-                maxAge: 1 * 24 * 60 * 60 * 1000,
+                sameSite: "none",
+                httpOnly: true,
             })
                 .status(200)
                 .json(savedUser._doc);

@@ -40,8 +40,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(
     cors({
-        origin: true,
+        origin: [
+            "http://localhost:3000",
+            "https://oliur-youtube-clone.onrender.com",
+        ],
         credentials: true,
+        methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
+        allowedHeaders: [
+            "Access-Control-Allow-Origin",
+            "Content-Type",
+            "Authorization",
+        ],
     })
 );
 app.use(
