@@ -42,9 +42,6 @@ export const signin = async (req, res, next) => {
 
         res.cookie("access_token", token, {
             httpOnly: true,
-            sameSite: "none",
-            secure: true,
-            domain: "oliur-youtube-clone.onrender.com",
             maxAge: 1 * 24 * 60 * 60 * 1000,
         })
             .status(200)
@@ -60,9 +57,6 @@ export const signout = async (req, res, next) => {
         res.cookie("access_token", null, {
             expires: new Date(Date.now()),
             httpOnly: true,
-            sameSite: "none",
-            secure: true,
-            domain: "oliur-youtube-clone.onrender.com",
         })
             .status(200)
             .json({ success: true, message: "User logged out successfully" });
@@ -94,9 +88,6 @@ export const googleAuth = async (req, res, next) => {
 
             res.cookie("access_token", token, {
                 httpOnly: true,
-                sameSite: "none",
-                secure: true,
-                domain: "oliur-youtube-clone.onrender.com",
                 maxAge: 1 * 24 * 60 * 60 * 1000,
             })
                 .status(200)
