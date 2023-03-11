@@ -41,7 +41,7 @@ export const signin = async (req, res, next) => {
         const { password, ...others } = user._doc;
 
         res.cookie("access_token", token, {
-            expires: new Date(Date.now() + 604800000),
+            expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
             secure: true,
             sameSite: "none",
             httpOnly: true,
@@ -76,6 +76,9 @@ export const googleAuth = async (req, res, next) => {
         if (user) {
             const token = jwt.sign({ id: user._id }, process.env.JWT);
             res.cookie("access_token", token, {
+                expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+                secure: true,
+                sameSite: "none",
                 httpOnly: true,
             })
                 .status(200)
@@ -91,7 +94,7 @@ export const googleAuth = async (req, res, next) => {
             });
 
             res.cookie("access_token", token, {
-                expires: new Date(Date.now() + 604800000),
+                expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
                 secure: true,
                 sameSite: "none",
                 httpOnly: true,
