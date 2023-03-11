@@ -42,7 +42,7 @@ app.use(
     cors({
         origin: [
             "http://localhost:3000",
-            "https://oliur-youtube-clone.onrender.com",
+            "https://oliur-youtube-clone.netlify.app",
         ],
         credentials: true,
         methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
